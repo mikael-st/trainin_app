@@ -31,7 +31,11 @@ class LoginPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _inputs(),
-          Button(content: 'Entrar', padding: EdgeInsets.symmetric(horizontal: 60, vertical: 8),),
+          Button(
+            content: 'Entrar',
+            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 8),
+            callback: (){},
+          ),
           _createAccount()
         ],
       );

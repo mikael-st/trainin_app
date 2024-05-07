@@ -4,7 +4,8 @@ import 'package:train_in/assets/palette.dart';
 class Button extends StatelessWidget {
   final String content;
   final EdgeInsets padding;
-  const Button({super.key, required this.content, required this.padding});
+  final Function callback;
+  const Button({super.key, required this.content, required this.padding, required this.callback});
 
   @override
   Widget build(BuildContext context) {

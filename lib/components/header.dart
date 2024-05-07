@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/components/day_label.dart';
-import 'package:train_in/components/options_btn.dart';
+import 'package:train_in/components/actions/options_btn.dart';
 
 // ignore: must_be_immutable
 class Header extends StatelessWidget implements PreferredSizeWidget {

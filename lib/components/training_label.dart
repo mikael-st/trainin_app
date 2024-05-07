@@ -3,7 +3,8 @@ import 'package:train_in/assets/palette.dart';
 import 'package:train_in/assets/trainin_icons.dart';
 
 class TrainingLabel extends StatelessWidget {
-  const TrainingLabel({super.key});
+  final String title, subtitle;
+  const TrainingLabel({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class TrainingLabel extends StatelessWidget {
         // style: ListTileStyle.list,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         contentPadding: EdgeInsets.symmetric(horizontal: 15),
-        title: Text('Nome', style: TextStyle(color: Palette.white, fontSize: 14, fontWeight: FontWeight.w600),),
-        subtitle: Text('{00} min   •   {dia}', style: TextStyle(color: Palette.yellow, fontSize: 12)),
+        title: Text(title, style: TextStyle(color: Palette.white, fontSize: 14, fontWeight: FontWeight.w600),),
+        subtitle: Text(subtitle, style: TextStyle(color: Palette.yellow, fontSize: 12)),
         trailing: Icon(TraininIcons.go_to, size: 20, color: Palette.light_gray),
         tileColor: Palette.items,
     ));

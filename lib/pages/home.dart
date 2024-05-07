@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
+import 'package:train_in/components/area_label.dart';
 import 'package:train_in/components/header.dart';
 import 'package:train_in/components/navbar.dart';
 import 'package:train_in/components/training_box.dart';
@@ -29,9 +30,9 @@ class HomePage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Label(text: 'Treino de hoje'),
+            AreaLabel(text: 'Treino de hoje'),
             TrainingBox(),
-            Label(text: 'Restrospectiva'),
+            AreaLabel(text: 'Restrospectiva'),
             Retrospective()
           ],
         ),
@@ -39,32 +40,9 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget Label({required String text}) {
-    return Container(
-      margin: EdgeInsets.only(left: 15, bottom: 10, top: 15),
-      child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: TextStyle(color: Palette.white, fontSize: 12, fontWeight: FontWeight.bold),
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 10),
-                alignment: Alignment.topCenter,
-                height: 2,
-                color: Palette.yellow,
-            )
-          )
-        ],
-      ),
-    );
-  }
-
   Widget Retrospective() {
     return Column(
-      children: List.generate(5, (index) => TrainingLabel()),
+      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {dia}',)),
     );
   }
 

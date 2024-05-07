@@ -33,9 +33,10 @@ class TrainingBox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Treino', style: TextStyle(color: Palette.white, fontWeight: FontWeight.bold)),
-            const Button(
+            Button(
               content: 'Começar',
               padding: EdgeInsets.symmetric(vertical: 8),
+              callback: (){},
             )
           ]),
       ),

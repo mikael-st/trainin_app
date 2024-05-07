@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/pages/home.dart';
+import 'package:train_in/pages/training.dart';
 
 void main() {
   runApp(const App());
@@ -41,7 +42,7 @@ class _AppState extends State<App> {
         textTheme: GoogleFonts.poppinsTextTheme(),
         fontFamily: 'Poppins'
       ),
-      home: HomePage(),
+      home: TrainingPage(),
     );
   }
 }
