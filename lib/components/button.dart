@@ -4,13 +4,13 @@ import 'package:train_in/assets/palette.dart';
 class Button extends StatelessWidget {
   final String content;
   final EdgeInsets padding;
-  final Function callback;
+  final Function() callback;
   const Button({super.key, required this.content, required this.padding, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: (){}, 
+      onPressed: callback, 
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6),
