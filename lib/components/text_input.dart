@@ -9,7 +9,6 @@ class TextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container (
-      height: 36,
       margin: margin,
       child: TextField(
         decoration: InputDecoration(
@@ -17,7 +16,7 @@ class TextBox extends StatelessWidget {
           hintStyle: TextStyle(color: Palette.white, fontSize: 12),
           filled: true,
           fillColor: Palette.items,
-          border: UnderlineInputBorder(borderRadius: BorderRadius.circular(6)),
+          border: UnderlineInputBorder(borderRadius: BorderRadius.circular(6), borderSide: BorderSide.none),
         ),
         style: TextStyle(color: Palette.white, fontSize: 12),
       ),
