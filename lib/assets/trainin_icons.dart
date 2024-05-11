@@ -30,4 +30,5 @@ class TraininIcons {
   static const IconData search = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData go_to = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData kcal = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

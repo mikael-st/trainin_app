@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
 
   Widget Retrospective() {
     return Column(
-      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {dia}',)),
+      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {dia}')),
     );
   }
 
