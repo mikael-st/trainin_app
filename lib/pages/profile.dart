@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/assets/trainin_icons.dart';
+import 'package:train_in/components/actions/add_btn.dart';
 import 'package:train_in/components/area_label.dart';
 import 'package:train_in/components/headers/back_header.dart';
 import 'package:train_in/components/button.dart';
@@ -19,12 +20,7 @@ class ProfilePage extends StatelessWidget {
       appBar: BackHeader(),
       body: _main(context),
       bottomNavigationBar: NavBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        shape: CircleBorder(),
-        backgroundColor: Palette.yellow,
-        child: Icon(Icons.add_rounded, color: Palette.white, size: 32),
-      ),
+      floatingActionButton: AddButton()
     );
   }
 

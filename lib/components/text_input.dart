@@ -10,13 +10,18 @@ class TextBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container (
       margin: margin,
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8)
+      ),
       child: TextField(
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 12),
           hintText: content,
-          hintStyle: TextStyle(color: Palette.white, fontSize: 12),
+          hintStyle: TextStyle(color: Palette.white, fontSize: 14),
           filled: true,
           fillColor: Palette.items,
-          border: UnderlineInputBorder(borderRadius: BorderRadius.circular(6), borderSide: BorderSide.none),
+          border: InputBorder.none
         ),
         style: TextStyle(color: Palette.white, fontSize: 12),
       ),
