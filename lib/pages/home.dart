@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/components/area_label.dart';
-import 'package:train_in/components/header.dart';
+import 'package:train_in/components/headers/header.dart';
 import 'package:train_in/components/navbar.dart';
 import 'package:train_in/components/training_box.dart';
 import 'package:train_in/components/training_label.dart';

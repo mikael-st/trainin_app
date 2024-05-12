@@ -4,9 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/assets/trainin_icons.dart';
 import 'package:train_in/components/area_label.dart';
-import 'package:train_in/components/back_header.dart';
+import 'package:train_in/components/headers/back_header.dart';
 import 'package:train_in/components/button.dart';
 import 'package:train_in/components/navbar.dart';
+import 'package:train_in/components/stat_label.dart';
 import 'package:train_in/components/training_label.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -75,35 +76,17 @@ class ProfilePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _statLabel(
+        StatLabel(
           // Indicar quantas calorias em média, já foram gastas
           icon: TraininIcons.kcal,
           title: 'Calorias',
           subtitle: '{000} kcal'
         ),
-        _statLabel(
+        StatLabel(
           // Indicar quanto peso 
           icon: TraininIcons.dumbell,
           title: 'Peso',
           subtitle: '{000} Kg'
-        )
-      ],
-    );
-  }
-
-  Widget _statLabel({required IconData icon, required String title, required String subtitle}) {
-    return Row(
-      children: [
-        Icon(icon, color: Palette.yellow),
-        Padding(
-          padding: EdgeInsets.only(left: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: TextStyle(color: Palette.white, fontSize: 12)),
-              Text(subtitle, style: TextStyle(color: Palette.white, fontSize: 12, fontWeight: FontWeight.bold))
-            ]
-          )
         )
       ],
     );

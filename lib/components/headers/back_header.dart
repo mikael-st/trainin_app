@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
 import 'package:train_in/components/actions/back_btn.dart';
 import 'package:train_in/components/actions/options_btn.dart';
@@ -18,14 +17,6 @@ class BackHeader extends StatelessWidget implements PreferredSizeWidget {
         leading: BackBtn(),
         actions: [OptionsButton()],
       ));
-  }
-
-  Color setLabelColor(int day) {
-    if (day == Globals.getToday()) {
-      return Palette.white;
-    } else {
-      return Palette.details;
-    }
   }
   
   @override

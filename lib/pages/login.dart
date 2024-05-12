@@ -10,13 +10,12 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         body: Container(
           alignment: Alignment.center,
           margin: EdgeInsets.only(top: 95, left: 15, right: 15, bottom: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _header(),
               _form(),
@@ -27,7 +26,12 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _form() {
-    return Column(
+    return Container(
+      width: 330,
+      decoration: BoxDecoration(
+        border: Border.all()
+      ),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _inputs(),
@@ -38,7 +42,8 @@ class LoginPage extends StatelessWidget {
           ),
           _createAccount()
         ],
-      );
+      ),
+    );
   }
 
   Widget _header() {

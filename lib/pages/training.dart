@@ -1,66 +1,44 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:train_in/assets/palette.dart';
 import 'package:train_in/components/area_label.dart';
-import 'package:train_in/components/back_header.dart';
 import 'package:train_in/components/button.dart';
-import 'package:train_in/components/modals/create_training.dart';
-import 'package:train_in/components/navbar.dart';
-import 'package:train_in/components/training_label.dart';
+import 'package:train_in/components/exercise_label.dart';
+import 'package:train_in/components/headers/training_header.dart';
+
 
 class TrainingPage extends StatelessWidget {
-  const TrainingPage({super.key});
+  TrainingPage({super.key});
+
+  final List<String> days = ['Dom', 'Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BackHeader(),
-      body: NoTraining(context),
-      bottomNavigationBar: NavBar(),
-    );
+        appBar: TrainingHeader(),
+        body: _main(),
+      );
   }
 
-  Widget Main() {
+  Widget _main() {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            AreaLabel(text: 'Seus Treinos'),
-            Training()
+            Button(content: 'Começar', padding: EdgeInsets.symmetric(vertical: 12, horizontal: 120), callback: (){}),
+            AreaLabel(text: 'Exercícios'),
+            _exercises()
           ],
         ),
-      )
+      ),
     );
   }
 
-  Widget NoTraining(BuildContext context) {
-    return Container(
-      alignment: Alignment.topCenter,
-      height: 90,
-      margin: EdgeInsets.only(top: 100),
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('Você ainda não possui treinos.', style: TextStyle(color: Palette.white),),
-            Button(
-              content: 'Criar Treino',
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-              callback: () { 
-                showModalBottomSheet(context: context, builder: (BuildContext context) => CreateTraining());
-              }
-            )
-          ],
-        ),
-      );
-  }
-
-  Widget Training() {
+  Widget _exercises() {
     return Column(
-      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {00} exercícios   •   {000} kcal')),
+      children: List.generate(5, (index) => ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
     );
   }
 }
