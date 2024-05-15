@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/assets/globals.dart';
 import 'package:train_in/assets/palette.dart';
-import 'package:train_in/pages/edit_training.dart';
+import 'package:train_in/pages/edit_exercise.dart';
 
 void main() {
   runApp(const App());
@@ -37,10 +37,10 @@ class _AppState extends State<App> {
         pageTransitionsTheme: null,
         scaffoldBackgroundColor: Palette.background,
         primaryTextTheme: GoogleFonts.outfitTextTheme(),
-        textTheme: GoogleFonts.poppinsTextTheme(),
+        textTheme: GoogleFonts.montserratTextTheme(),
         fontFamily: 'Poppins'
       ),
-      home: EditTrainingPage(),
+      home: EditExercisePage(),
     );
   }
 }
