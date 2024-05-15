@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:train_in/assets/globals.dart';
-import 'package:train_in/assets/palette.dart';
-import 'package:train_in/pages/edit_exercise.dart';
+import 'package:train_in/view/assets/globals.dart';
+import 'package:train_in/view/assets/palette.dart';
+import 'package:train_in/view/pages/login.dart';
+import 'package:train_in/view/pages/main_page.dart';
 
 void main() {
   runApp(const App());
@@ -27,7 +29,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: Palette.items));
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         dividerTheme: DividerThemeData(
           color: Palette.yellow,
@@ -40,8 +42,11 @@ class _AppState extends State<App> {
         textTheme: GoogleFonts.montserratTextTheme(),
         fontFamily: 'Poppins'
       ),
-      home: EditExercisePage(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => const LoginPage()),
+        GetPage(name: '/main', page: () => Main()),
+      ],
     );
   }
 }
-
