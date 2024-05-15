@@ -5,19 +5,19 @@ import 'package:train_in/pages/edit_exercise.dart';
 class CheckMode extends StatelessWidget {
   final ExerciseMode value;
   final ExerciseMode group;
-  final Function() callback;
-  final ValueChanged<ExerciseMode> onChanged;
+  // final Function() callback;
+  final ValueChanged<ExerciseMode?> onChanged;
   final String label;
 
-  const CheckMode({super.key, required this.value, required this.group, required this.label, required this.onChanged, required this.callback});
+  const CheckMode({super.key, required this.value, required this.group, required this.label, required this.onChanged, /* required this.callback */});
 
   @override
   Widget build(BuildContext context) {
-    final bool checked = value == group;
+    final bool checked = value.runtimeType == group.runtimeType;
     return InkWell(
       onTap: () {
-        callback.call();
         onChanged(value);
+        print('value: $value\ngroup: $group\nis checked: $checked');
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),

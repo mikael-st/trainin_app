@@ -15,16 +15,12 @@ class EditExercisePage extends StatefulWidget {
 }
 
 class _EditExercisePageState extends State<EditExercisePage> {
-
-
-  final List<CheckMode> _modes = [
-    CheckMode(
-      value: RepsState(),
-      group: ExerciseModeState.mode.value,
-      label: 'Repetições',
-      onChanged: ,
-      callback: )
-  ];
+  
+  void _onChangeMode(ExerciseMode? value) {
+    setState(() {
+      ExerciseModeState.mode.value = value!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +40,7 @@ class _EditExercisePageState extends State<EditExercisePage> {
           AnimatedBuilder(
             animation: ExerciseModeState.mode,
             builder: (context, child) {
-              return ExerciseModeState.mode.value.change();
+              return ExerciseModeState.mode.value.view();
             }
           ),
           AreaLabel(text: 'Músculos acionados')
@@ -55,7 +51,21 @@ class _EditExercisePageState extends State<EditExercisePage> {
   Widget _modesArea() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: _modes,
+      // children: _modes,
+      children: [
+        CheckMode(
+          value: RepsState(),
+          group: ExerciseModeState.mode.value,
+          label: 'Repetições',
+          onChanged: _onChangeMode
+        ),
+        CheckMode(
+          value: WearinessState(),
+          group: ExerciseModeState.mode.value,
+          label: 'Exaustão',
+          onChanged: _onChangeMode
+        ),
+      ],
     );
   }
 }
@@ -76,27 +86,32 @@ class ExerciseSerieManager {
   }
 }
 
+// enum ExerciseMode { reps, weariness }
+
 interface class ExerciseMode {
   // late CheckMode checkbox;
-  external Widget change();
+  external Widget view();
 }
 
 class RepsState implements ExerciseMode {
 
   Widget _inputFields(int index) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text('$indexº', style: TextStyle(color: Palette.white)),
-        AutoSizeTextField(label: 'Reps'),
-        Text('X', style: TextStyle(color: Palette.white)),
-        AutoSizeTextField(label: 'Kg')
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text('$indexº', style: TextStyle(color: Palette.white)),
+          AutoSizeTextField(label: 'Reps'),
+          Text('X', style: TextStyle(color: Palette.white)),
+          AutoSizeTextField(label: 'Kg')
+        ],
+      )
     );
   }
 
   @override
-  change() {
+  view() {
     return IntrinsicHeight(
       child: Container(
         margin: EdgeInsets.only(top: 10),
@@ -112,23 +127,72 @@ class RepsState implements ExerciseMode {
 class WearinessState implements ExerciseMode {
 
   Widget _inputWearness(int index) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text('$indexº', style: TextStyle(color: Palette.white)),
-        AutoSizeTextField(label: 'Kg')
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text('$indexº', style: TextStyle(color: Palette.white)),
+          AutoSizeTextField(label: 'Kg')
+        ],
+      )
     );
   }
 
   @override
-  change() {
+  view() {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      width: 250,
+      width: 150,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(3, (index) => _inputWearness(index+1))),
+    );
+  }
+}
+
+class CustomRadio extends StatelessWidget {
+  final int value;
+  final int groupValue;
+  final ValueChanged<int?> onChanged;
+  final String label;
+
+  const CustomRadio({
+    required this.value,
+    required this.groupValue,
+    required this.onChanged,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSelected = value == groupValue;
+
+    return GestureDetector(
+      onTap: () {
+        onChanged(value);
+      },
+      child: Container(
+        margin: EdgeInsets.all(8.0),
+        width: 40.0,
+        height: 40.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isSelected ? Colors.blue : Colors.white,
+          border: Border.all(
+            color: isSelected ? Colors.blue : Colors.grey,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              color: isSelected ? Colors.white : Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
