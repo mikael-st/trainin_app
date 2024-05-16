@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/go_to.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
@@ -12,7 +13,7 @@ class NavBar extends StatelessWidget {
             border: Border(top: BorderSide(color: Palette.yellow, width: 2))),
         child: BottomNavigationBar(
           onTap: (index) => {
-            
+            Go.to(index, context)
           },
           items: const [
             BottomNavigationBarItem(

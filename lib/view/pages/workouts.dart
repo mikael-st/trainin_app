@@ -15,7 +15,6 @@ class MyWorkoutsPage extends StatelessWidget {
     return Scaffold(
       appBar: BackHeader(),
       body: NoTraining(context),
-      bottomNavigationBar: NavBar(),
     );
   }
 

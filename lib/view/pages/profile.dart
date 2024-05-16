@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: BackHeader(),
       body: _main(context),
-      bottomNavigationBar: NavBar(),
+      // bottomNavigationBar: NavBar(),
       floatingActionButton: AddButton()
     );
   }
