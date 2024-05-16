@@ -9,7 +9,7 @@ class BackBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: (){
-        print('hi');
+        Navigator.pop(context);
       },
       style: IconButton.styleFrom(
         shape: RoundedRectangleBorder(),

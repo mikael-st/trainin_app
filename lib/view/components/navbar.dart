@@ -3,38 +3,56 @@ import 'package:train_in/service/go_to.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+class NavBar extends StatefulWidget {
+
+  NavBar({super.key});
+
+  @override
+  State<NavBar> createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
             border: Border(top: BorderSide(color: Palette.yellow, width: 2))),
-        child: BottomNavigationBar(
-          onTap: (index) => {
-            Go.to(index, context)
+        child: NavigationBarTheme(
+          data: NavigationBarThemeData(
+            labelTextStyle: MaterialStateProperty.all(
+              TextStyle(
+                color: Palette.white,
+                fontSize: 12,
+              )
+            )
+          ),
+          child: NavigationBar(
+          onDestinationSelected: (value) {
+            setState(() {
+              index = value;
+            });
+            Go.to(value, context);
           },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled),
-              label: 'Home',
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Icons.home_filled, color: Palette.white),
+              label: 'Início',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(TraininIcons.dumbell),
+            NavigationDestination(
+              icon: Icon(TraininIcons.dumbell, color: Palette.white),
               label: 'Treino',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(TraininIcons.user, size: 20),
+            NavigationDestination(
+              icon: Icon(TraininIcons.user, size: 20, color: Palette.white),
               label: 'Perfil',
             )
           ],
-          selectedFontSize: 10,
-          unselectedFontSize: 10,
-          unselectedItemColor: Palette.white,
-          fixedColor: Palette.white,
+          selectedIndex: index,
           backgroundColor: Palette.items,
-          type: BottomNavigationBarType.fixed,
-        ));
+          indicatorColor: Palette.yellow,
+        )),
+      );
   }
 }
