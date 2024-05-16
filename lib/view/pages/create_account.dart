@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/button.dart';
@@ -34,7 +35,9 @@ class CreateAccountPage extends StatelessWidget {
           Button(
             content: 'Criar conta',
             padding: EdgeInsets.symmetric(horizontal: 60, vertical: 8),
-            callback: (){},
+            callback: (){
+              Get.toNamed('/main');
+            },
           ),
         ],
       );

@@ -7,7 +7,6 @@ import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/headers/back_header.dart';
 import 'package:train_in/view/components/button.dart';
-import 'package:train_in/view/components/navbar.dart';
 import 'package:train_in/view/components/stat_label.dart';
 import 'package:train_in/view/components/training_label.dart';
 
@@ -20,7 +19,7 @@ class ProfilePage extends StatelessWidget {
       appBar: BackHeader(),
       body: _main(context),
       // bottomNavigationBar: NavBar(),
-      floatingActionButton: AddButton()
+      floatingActionButton: AddButton(callback: (){})
     );
   }
 
@@ -90,7 +89,7 @@ class ProfilePage extends StatelessWidget {
 
   Widget _goals() {
     return Column(
-      children: List.generate(5, (index) => TrainingLabel(title: '{meta}', subtitle: '{objetivo}')),
+      children: List.generate(5, (index) => TrainingLabel(title: '{meta}', subtitle: '{objetivo}', callback: (){})),
     );
   }
 

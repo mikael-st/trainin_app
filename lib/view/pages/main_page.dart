@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:train_in/service/main_state.dart';
-import 'package:train_in/view/components/headers/header.dart';
 import 'package:train_in/view/components/navbar.dart';
 
 class Main extends StatelessWidget {

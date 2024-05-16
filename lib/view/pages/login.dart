@@ -76,8 +76,11 @@ class LoginPage extends StatelessWidget {
           border: Border(
               top: BorderSide(
                   color: Palette.white, width: 2, style: BorderStyle.solid))),
-      child: Text('Criar conta',
-          style: TextStyle(color: Palette.yellow, fontSize: 12)),
+      child: InkWell(
+        onTap: () => Get.toNamed('/create_account'),
+        child: Text('Criar conta',
+          style: TextStyle(color: Palette.yellow, fontSize: 12))
+      ),
     );
   }
 

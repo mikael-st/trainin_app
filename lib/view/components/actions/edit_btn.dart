@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
@@ -9,7 +10,7 @@ class EditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: (){
-        print('hi');
+        Get.toNamed('/edit_training');
       },
       style: IconButton.styleFrom(
         shape: RoundedRectangleBorder(),

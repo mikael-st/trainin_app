@@ -4,8 +4,11 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/view/assets/globals.dart';
 import 'package:train_in/view/assets/palette.dart';
+import 'package:train_in/view/pages/create_account.dart';
+import 'package:train_in/view/pages/edit_training.dart';
 import 'package:train_in/view/pages/login.dart';
 import 'package:train_in/view/pages/main_page.dart';
+import 'package:train_in/view/pages/training.dart';
 
 void main() {
   runApp(const App());
@@ -42,10 +45,13 @@ class _AppState extends State<App> {
         textTheme: GoogleFonts.montserratTextTheme(),
         fontFamily: 'Poppins'
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       getPages: [
-        GetPage(name: '/', page: () => const LoginPage()),
+        GetPage(name: '/login', page: () => const LoginPage()),
         GetPage(name: '/main', page: () => Main()),
+        GetPage(name: '/create_account', page: () => CreateAccountPage()),
+        GetPage(name: '/training', page: () => TrainingPage()),
+        GetPage(name: '/edit_training', page: () => EditTrainingPage())
       ],
     );
   }

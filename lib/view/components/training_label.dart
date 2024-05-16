@@ -4,7 +4,8 @@ import 'package:train_in/view/assets/trainin_icons.dart';
 
 class TrainingLabel extends StatelessWidget {
   final String title, subtitle;
-  const TrainingLabel({super.key, required this.title, required this.subtitle});
+  final Function() callback;
+  const TrainingLabel({super.key, required this.title, required this.subtitle, required this.callback});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class TrainingLabel extends StatelessWidget {
         borderRadius: BorderRadius.circular(8)
       ),
       child: ListTile(
-        onTap: (){},
+        onTap: callback,
         // style: ListTileStyle.list,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         contentPadding: EdgeInsets.symmetric(horizontal: 15),
