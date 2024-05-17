@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:train_in/view/assets/globals.dart';
+import 'package:train_in/service/globals.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/pages/create_account.dart';
 import 'package:train_in/view/pages/edit_training.dart';

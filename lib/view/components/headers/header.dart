@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:train_in/view/assets/globals.dart';
+import 'package:train_in/service/globals.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/day_label.dart';
 import 'package:train_in/view/components/actions/options_btn.dart';
