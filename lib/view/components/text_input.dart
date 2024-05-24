@@ -4,7 +4,7 @@ import 'package:train_in/view/assets/palette.dart';
 class TextBox extends StatelessWidget {
   final String content;
   final EdgeInsets? margin;
-  TextBox({super.key, required this.content, this.margin});
+  const TextBox({super.key, required this.content, this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class TextBox extends StatelessWidget {
       ),
       child: TextField(
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 12),
+          contentPadding: const EdgeInsets.only(left: 12),
           hintText: content,
           hintStyle: TextStyle(color: Palette.white, fontSize: 14),
           filled: true,

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 import 'package:train_in/view/components/actions/add_btn.dart';
@@ -16,7 +14,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BackHeader(),
+      appBar: const BackHeader(),
       body: _main(context),
       // bottomNavigationBar: NavBar(),
       floatingActionButton: AddButton(callback: (){})
@@ -25,12 +23,12 @@ class ProfilePage extends StatelessWidget {
 
   Widget _main(BuildContext ctx) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: SingleChildScrollView(
         child: Column(
           children: [
             _userInfos(),
-            AreaLabel(text: 'Metas'),
+            const AreaLabel(text: 'Metas'),
             _noGoals(ctx)
           ]
         ),
@@ -41,7 +39,7 @@ class ProfilePage extends StatelessWidget {
   Widget _userInfos() {
     return Container(
       height: 120,
-      margin: EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(bottom: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -61,14 +59,14 @@ class ProfilePage extends StatelessWidget {
             child: Text('U', style: TextStyle(color: Palette.yellow, fontWeight: FontWeight.bold, fontSize: 26),),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             child: Text('{username}', style: TextStyle(color: Palette.white, fontWeight: FontWeight.bold))  
           )
         ]);
   }
 
   Widget _stats() {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         StatLabel(
@@ -97,14 +95,14 @@ class ProfilePage extends StatelessWidget {
     return Container(
       alignment: Alignment.topCenter,
       height: 90,
-      margin: EdgeInsets.only(top: 100),
+      margin: const EdgeInsets.only(top: 100),
       child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Você ainda não possui metas.', style: TextStyle(color: Palette.white),),
             Button(
               content: 'Criar Meta',
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
               callback: () {
                 print('hi');
               }

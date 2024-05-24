@@ -25,9 +25,9 @@ class HomePage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            AreaLabel(text: 'Treino de hoje'),
-            TrainingBox(),
-            AreaLabel(text: 'Restrospectiva'),
+            const AreaLabel(text: 'Treino de hoje'),
+            const TrainingBox(),
+            const AreaLabel(text: 'Restrospectiva'),
             _retrospective()
           ],
         ),

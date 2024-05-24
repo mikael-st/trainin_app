@@ -14,7 +14,7 @@ class CreateAccountPage extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.only(top: 95, left: 15, right: 15, bottom: 35),
+          margin: const EdgeInsets.only(top: 95, left: 15, right: 15, bottom: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,7 +34,7 @@ class CreateAccountPage extends StatelessWidget {
           _inputs(),
           Button(
             content: 'Criar conta',
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 8),
             callback: (){
               Get.toNamed('/main');
             },
@@ -44,7 +44,7 @@ class CreateAccountPage extends StatelessWidget {
   }
 
   Widget _header() {
-    return Container(
+    return SizedBox(
       height: 56,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +65,7 @@ class CreateAccountPage extends StatelessWidget {
   }
 
   Widget _inputs() {
-    return Container(
+    return const SizedBox(
       width: 330,
       child: Column(
         children: [
@@ -88,7 +88,7 @@ class CreateAccountPage extends StatelessWidget {
         fontFamily: GoogleFonts.outfit().fontFamily 
       ),
       children: [
-        TextSpan(text: 'Train'),
+        const TextSpan(text: 'Train'),
         TextSpan(text: '.in', style: TextStyle(color: Palette.yellow))
       ],
     ));

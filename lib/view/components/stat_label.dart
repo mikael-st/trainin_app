@@ -12,7 +12,7 @@ class StatLabel extends StatelessWidget {
       children: [
         Icon(icon, color: Palette.yellow),
         Padding(
-          padding: EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.only(left: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

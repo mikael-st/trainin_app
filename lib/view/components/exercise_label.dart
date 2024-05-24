@@ -12,7 +12,7 @@ class ExerciseLabel extends StatelessWidget {
       child: Container(
         clipBehavior: Clip.hardEdge,
         // width: 330,
-        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         decoration: BoxDecoration(
           color: Palette.items,
             borderRadius: BorderRadius.circular(8)),
@@ -31,7 +31,7 @@ class ExerciseLabel extends StatelessWidget {
 
   Widget _leading() {
     return ConstrainedBox(
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         minHeight: 68,
         maxHeight: 68,
         minWidth: 68,
@@ -45,7 +45,7 @@ class ExerciseLabel extends StatelessWidget {
 
   Widget _text() {
     return Padding(
-      padding: EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(left: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -57,7 +57,7 @@ class ExerciseLabel extends StatelessWidget {
 
   Widget _trealing() {
     return Padding(
-      padding: EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.only(right: 10),
       child: Icon(TraininIcons.go_to, size: 20, color: Palette.light_gray),
     );
   }

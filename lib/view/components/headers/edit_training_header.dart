@@ -20,17 +20,17 @@ class EditTrainingHeader extends StatelessWidget
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
       backgroundColor: Palette.items,
-      leading: BackBtn(),
-      actions: [DoneButton()],
+      leading: const BackBtn(),
+      actions: const [DoneButton()],
       bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(
               height: 180,
-              margin: EdgeInsets.only(top: 8, bottom: 20, left: 10, right: 10),
+              margin: const EdgeInsets.only(top: 8, bottom: 20, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [_input(), AreaLabel(text: 'Dias'), _days()],
+                children: [_input(), const AreaLabel(text: 'Dias'), _days()],
               ))),
     ));
   }
@@ -38,7 +38,7 @@ class EditTrainingHeader extends StatelessWidget
   Widget _input() {
     return TextField(
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 12),
+          contentPadding: const EdgeInsets.only(left: 12),
           hintText: 'Nome',
           hintStyle: TextStyle(color: Palette.white, fontSize: 14),
           filled: true,
@@ -58,5 +58,5 @@ class EditTrainingHeader extends StatelessWidget
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(250);
+  Size get preferredSize => const Size.fromHeight(250);
 }

@@ -20,7 +20,7 @@ class CheckMode extends StatelessWidget {
         print('value: $value\ngroup: $group\nis checked: $checked');
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
           color: checked ? Palette.yellow : Palette.details,
           borderRadius: BorderRadius.circular(4)

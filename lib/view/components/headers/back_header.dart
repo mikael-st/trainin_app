@@ -5,7 +5,7 @@ import 'package:train_in/view/components/actions/options_btn.dart';
 
 // ignore: must_be_immutable
 class BackHeader extends StatelessWidget implements PreferredSizeWidget {
-  BackHeader({super.key});
+  const BackHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,12 @@ class BackHeader extends StatelessWidget implements PreferredSizeWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
         backgroundColor: Palette.items,
-        leading: BackBtn(),
-        actions: [OptionsButton()],
+        leading: const BackBtn(),
+        actions: const [OptionsButton()],
       ));
   }
   
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

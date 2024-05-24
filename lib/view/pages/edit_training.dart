@@ -20,15 +20,15 @@ class EditTrainingPage extends StatelessWidget {
 
   Widget _main() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            AreaLabel(text: 'Exercícios'),
-            Button(content: 'Adicionar exercício', padding: EdgeInsets.symmetric(horizontal: 90, vertical: 12), callback: (){}),
+            const AreaLabel(text: 'Exercícios'),
+            Button(content: 'Adicionar exercício', padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 12), callback: (){}),
             _exercises()
           ],
         ),
@@ -38,7 +38,7 @@ class EditTrainingPage extends StatelessWidget {
 
   Widget _exercises() {
     return Column(
-      children: List.generate(5, (index) => ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
+      children: List.generate(5, (index) => const ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
     );
   }
 }

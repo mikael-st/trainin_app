@@ -1,5 +1,8 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
-class Storage {
-  static final prefs = SharedPreferences.getInstance();
+class HiveConfig {
+  static start() async {
+    Directory dir = await getApplicationDocumentsDirectory();
+  }
 }

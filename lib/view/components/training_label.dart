@@ -11,7 +11,7 @@ class TrainingLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.hardEdge,
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8)
       ),
@@ -19,7 +19,7 @@ class TrainingLabel extends StatelessWidget {
         onTap: callback,
         // style: ListTileStyle.list,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        contentPadding: EdgeInsets.symmetric(horizontal: 15),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
         title: Text(title, style: TextStyle(color: Palette.white, fontSize: 14, fontWeight: FontWeight.w600),),
         subtitle: Text(subtitle, style: TextStyle(color: Palette.yellow, fontSize: 12)),
         trailing: Icon(TraininIcons.go_to, size: 20, color: Palette.light_gray),

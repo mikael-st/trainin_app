@@ -5,7 +5,7 @@ import 'package:train_in/view/assets/trainin_icons.dart';
 
 class NavBar extends StatefulWidget {
 
-  NavBar({super.key});
+  const NavBar({super.key});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -21,7 +21,7 @@ class _NavBarState extends State<NavBar> {
             border: Border(top: BorderSide(color: Palette.yellow, width: 2))),
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
-            labelTextStyle: MaterialStateProperty.all(
+            labelTextStyle: WidgetStateProperty.all(
               TextStyle(
                 color: Palette.white,
                 fontSize: 12,

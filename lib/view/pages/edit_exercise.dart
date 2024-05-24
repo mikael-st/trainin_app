@@ -25,7 +25,7 @@ class _EditExercisePageState extends State<EditExercisePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: EditExerciseHeader(),
+      appBar: const EditExerciseHeader(),
       body: _main(),
     );
   }
@@ -33,7 +33,7 @@ class _EditExercisePageState extends State<EditExercisePage> {
   Widget _main() {
     return Container(
       alignment: Alignment.topCenter,
-      margin: EdgeInsets.symmetric(vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 20),
       child: SingleChildScrollView(
         child: Column(children: [
           _modesArea(),
@@ -43,7 +43,7 @@ class _EditExercisePageState extends State<EditExercisePage> {
               return ExerciseModeState.mode.value.view;
             }
           ),
-          AreaLabel(text: 'Músculos acionados')
+          const AreaLabel(text: 'Músculos acionados')
         ]),
       ));
   }
@@ -106,14 +106,14 @@ class _RepsViewState extends State<RepsView> {
 
   Widget _inputFields(int index) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text('$indexº', style: TextStyle(color: Palette.white)),
-          AutoSizeTextField(label: 'Reps'),
+          const AutoSizeTextField(label: 'Reps'),
           Text('X', style: TextStyle(color: Palette.white)),
-          AutoSizeTextField(label: 'Kg')
+          const AutoSizeTextField(label: 'Kg')
         ],
       )
     );
@@ -122,7 +122,7 @@ class _RepsViewState extends State<RepsView> {
   Widget _series() {
     return IntrinsicHeight(
       child: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         width: 250,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -135,14 +135,14 @@ class _RepsViewState extends State<RepsView> {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         width: 250,
         child: Column(
           children: [
             _series(),
             Button(
               content: 'Adicionar série',
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
               callback: () {
                 setState(() {
                   manager.addSerie();
@@ -167,12 +167,12 @@ class _WearinessStateState extends State<WearinessView> {
 
   Widget _inputFields(int index) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text('$indexº', style: TextStyle(color: Palette.white)),
-          AutoSizeTextField(label: 'Kg')
+          const AutoSizeTextField(label: 'Kg')
         ],
       )
     );
@@ -181,7 +181,7 @@ class _WearinessStateState extends State<WearinessView> {
   Widget _series() {
     return IntrinsicHeight(
       child: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         width: 150,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -194,14 +194,14 @@ class _WearinessStateState extends State<WearinessView> {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         width: 250,
         child: Column(
           children: [
             _series(),
             Button(
               content: 'Adicionar série',
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
               callback: () {
                 setState(() {
                   manager.addSerie();

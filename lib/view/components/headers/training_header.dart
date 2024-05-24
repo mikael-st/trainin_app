@@ -16,19 +16,19 @@ class TrainingHeader extends StatelessWidget implements PreferredSizeWidget {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
         backgroundColor: Palette.items,
-        leading: BackBtn(),
-        actions: [EditButton()],
+        leading: const BackBtn(),
+        actions: const [EditButton()],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(
             height: 100,
-            margin: EdgeInsets.only(top: 8, bottom: 20, left: 10, right: 10),
+            margin: const EdgeInsets.only(top: 8, bottom: 20, left: 10, right: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text('Treino', style: TextStyle(color: Palette.white, fontSize: 20, fontWeight: FontWeight.bold)),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   StatLabel(icon: TraininIcons.clock, title: 'Duração', subtitle: '{00} min'),
@@ -43,5 +43,5 @@ class TrainingHeader extends StatelessWidget implements PreferredSizeWidget {
   
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(200);
+  Size get preferredSize => const Size.fromHeight(200);
 }

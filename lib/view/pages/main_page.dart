@@ -12,7 +12,7 @@ class Main extends StatelessWidget {
         animation: MainPageStateManager.page,
         builder: (context, child) => MainPageStateManager.page.value.content
       ),
-      bottomNavigationBar: NavBar(),
+      bottomNavigationBar: const NavBar(),
     );
   }
 }

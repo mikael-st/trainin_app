@@ -8,7 +8,7 @@ class AreaLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15, bottom: 10, top: 15),
+      margin: const EdgeInsets.only(left: 15, bottom: 10, top: 15),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -18,7 +18,7 @@ class AreaLabel extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 alignment: Alignment.topCenter,
                 height: 2,
                 color: Palette.yellow,

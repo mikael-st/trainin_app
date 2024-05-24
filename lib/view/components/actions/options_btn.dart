@@ -12,8 +12,8 @@ class OptionsButton extends StatelessWidget {
         print('hi');
       },
       style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(),
-        padding: EdgeInsets.all(0),
+        shape: const RoundedRectangleBorder(),
+        padding: const EdgeInsets.all(0),
         alignment: Alignment.centerLeft
       ),
       icon: Icon(TraininIcons.options, size: 12, color: Palette.white,),

@@ -19,11 +19,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
         backgroundColor: Palette.items,
         title: Text('Bom dia, user', style: TextStyle(color: Palette.white, fontSize: 14)),
-        actions: [OptionsButton()],
+        actions: const [OptionsButton()],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Padding(
-            padding: EdgeInsets.only(top: 8, bottom: 12, left: 10, right: 10),
+            padding: const EdgeInsets.only(top: 8, bottom: 12, left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: days.map((d) => DayLabel(name: d, color: setLabelColor(days.indexOf(d)),)).toList()))),
@@ -40,5 +40,5 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(120);
+  Size get preferredSize => const Size.fromHeight(120);
 }

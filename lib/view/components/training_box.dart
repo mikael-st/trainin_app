@@ -8,19 +8,19 @@ class TrainingBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
       height: 185,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: AssetImage('assets/images/chest-training.png'),
           fit: BoxFit.cover
         )
       ),
       child: Container(
         alignment: Alignment.bottomCenter,
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Palette.items, Palette.transparent],
@@ -35,7 +35,7 @@ class TrainingBox extends StatelessWidget {
             Text('Treino', style: TextStyle(color: Palette.white, fontWeight: FontWeight.bold)),
             Button(
               content: 'Começar',
-              padding: EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               callback: (){},
             )
           ]),

@@ -8,11 +8,11 @@ class AutoSizeTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(),
+      constraints: const BoxConstraints(),
       child: IntrinsicWidth(
       child: TextField(
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(12),
+          contentPadding: const EdgeInsets.all(12),
           hintText: label,
           hintStyle: TextStyle(color: Palette.white, fontSize: 14),
           filled: true,

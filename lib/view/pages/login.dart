@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.only(top: 95, left: 15, right: 15, bottom: 35),
+          margin: const EdgeInsets.only(top: 95, left: 15, right: 15, bottom: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
           _inputs(),
           Button(
             content: 'Entrar',
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 8),
             callback: (){
               Get.toNamed('/main');
             },
@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _inputs() {
-    return Column(
+    return const Column(
       children: [
         TextBox(content: 'usuário', margin: EdgeInsets.only(bottom: 15)),
         TextBox(content: 'senha', margin: EdgeInsets.only(bottom: 65),),
@@ -68,7 +68,7 @@ class LoginPage extends StatelessWidget {
 
   Widget _createAccount() {
     return Container(
-      margin: EdgeInsets.only(top: 25),
+      margin: const EdgeInsets.only(top: 25),
       width: double.infinity,
       height: 34,
       alignment: Alignment.center,
@@ -94,7 +94,7 @@ class LoginPage extends StatelessWidget {
         fontFamily: GoogleFonts.outfit().fontFamily 
       ),
       children: [
-        TextSpan(text: 'Train'),
+        const TextSpan(text: 'Train'),
         TextSpan(text: '.in', style: TextStyle(color: Palette.yellow))
       ],
     ));

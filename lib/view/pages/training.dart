@@ -11,22 +11,22 @@ class TrainingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: TrainingHeader(),
+        appBar: const TrainingHeader(),
         body: _main(),
       );
   }
 
   Widget _main() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
         clipBehavior: Clip.none,
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Button(content: 'Começar', padding: EdgeInsets.symmetric(vertical: 12, horizontal: 120), callback: (){}),
-            AreaLabel(text: 'Exercícios'),
+            Button(content: 'Começar', padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 120), callback: (){}),
+            const AreaLabel(text: 'Exercícios'),
             _exercises()
           ],
         ),
@@ -36,7 +36,7 @@ class TrainingPage extends StatelessWidget {
 
   Widget _exercises() {
     return Column(
-      children: List.generate(5, (index) => ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
+      children: List.generate(5, (index) => const ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
     );
   }
 }

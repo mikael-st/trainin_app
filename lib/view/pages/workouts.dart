@@ -13,9 +13,9 @@ class MyWorkoutsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BackHeader(),
+      appBar: const BackHeader(),
       body: _main(),
-      floatingActionButton: AddButton(callback: () => showModalBottomSheet(context: context, builder: (BuildContext context) => CreateTraining())),
+      floatingActionButton: AddButton(callback: () => showModalBottomSheet(context: context, builder: (BuildContext context) => const CreateTraining())),
     );
   }
 
@@ -27,7 +27,7 @@ class MyWorkoutsPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            AreaLabel(text: 'Seus Treinos'),
+            const AreaLabel(text: 'Seus Treinos'),
             _training()
           ],
         ),
@@ -39,7 +39,7 @@ class MyWorkoutsPage extends StatelessWidget {
     return Container(
       alignment: Alignment.topCenter,
       height: 90,
-      margin: EdgeInsets.only(top: 100),
+      margin: const EdgeInsets.only(top: 100),
       child: Text('Você ainda não possui treinos.', style: TextStyle(color: Palette.white),),
     );
   }

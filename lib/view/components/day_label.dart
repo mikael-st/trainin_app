@@ -13,7 +13,7 @@ class DayLabel extends StatelessWidget {
         Container(
           width: 30,
           height: 7,
-          margin: EdgeInsets.only(bottom: 5),
+          margin: const EdgeInsets.only(bottom: 5),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(50)

@@ -14,12 +14,12 @@ class EditExerciseHeader extends StatelessWidget implements PreferredSizeWidget 
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
         backgroundColor: Palette.items,
-        leading: BackBtn(),
-        actions: [DoneButton()],
+        leading: const BackBtn(),
+        actions: const [DoneButton()],
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(
-            margin: EdgeInsets.only(left: 22, right: 22, top: 30, bottom: 12),
+            margin: const EdgeInsets.only(left: 22, right: 22, top: 30, bottom: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -40,7 +40,7 @@ class EditExerciseHeader extends StatelessWidget implements PreferredSizeWidget 
               onPressed: (){},
               icon: Icon(Icons.info, size: 16, color: Palette.white),
               style: IconButton.styleFrom(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
               )
             )
           ],
@@ -49,5 +49,5 @@ class EditExerciseHeader extends StatelessWidget implements PreferredSizeWidget 
   
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(140);
+  Size get preferredSize => const Size.fromHeight(140);
 }

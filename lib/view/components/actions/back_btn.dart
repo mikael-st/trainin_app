@@ -12,8 +12,8 @@ class BackBtn extends StatelessWidget {
         Navigator.pop(context);
       },
       style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(),
-        padding: EdgeInsets.all(12),
+        shape: const RoundedRectangleBorder(),
+        padding: const EdgeInsets.all(12),
         alignment: Alignment.centerLeft
       ),
       icon: Icon(TraininIcons.back, size: 20, color: Palette.white,),

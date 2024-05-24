@@ -9,7 +9,7 @@ class AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
         onPressed: callback,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         backgroundColor: Palette.yellow,
         child: Icon(Icons.add_rounded, color: Palette.white, size: 32),
       );

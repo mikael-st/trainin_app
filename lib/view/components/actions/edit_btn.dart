@@ -13,8 +13,8 @@ class EditButton extends StatelessWidget {
         Get.toNamed('/edit_training');
       },
       style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(),
-        padding: EdgeInsets.all(0),
+        shape: const RoundedRectangleBorder(),
+        padding: const EdgeInsets.all(0),
         alignment: Alignment.centerLeft
       ),
       icon: Icon(TraininIcons.edit, size: 18, color: Palette.white,),
