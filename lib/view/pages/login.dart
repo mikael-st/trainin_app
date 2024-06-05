@@ -29,9 +29,6 @@ class LoginPage extends StatelessWidget {
   Widget _form() {
     return Container(
       width: 330,
-      decoration: BoxDecoration(
-        border: Border.all()
-      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

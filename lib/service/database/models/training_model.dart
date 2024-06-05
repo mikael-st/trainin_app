@@ -9,5 +9,10 @@ class TrainingModel {
   List<int> days;
   List<Exercise> exercises;
 
-  TrainingModel({required this.id, required this.name, required this.days, required this.exercises});
+  TrainingModel({
+    required this.id,
+    required this.name,
+    required this.days,
+    required this.exercises
+  });
 }

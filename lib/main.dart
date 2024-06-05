@@ -4,6 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/service/globals.dart';
 import 'package:train_in/service/storage.dart';
+import 'package:train_in/service/utils/utils.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/pages/create_account.dart';
 import 'package:train_in/view/pages/edit_training.dart';
@@ -13,10 +14,11 @@ import 'package:train_in/view/pages/training.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await HiveConfig.start();
+  print( await Utils.imageProvider.status());
+  /* await HiveConfig.start();
   runApp(
     const App()
-  );
+  ); */
 }
 
 class App extends StatefulWidget {
