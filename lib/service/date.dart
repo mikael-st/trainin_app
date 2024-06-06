@@ -1,4 +1,4 @@
-class Globals {
+class Date {
   static DateTime? today;
   static final List<int> _days = [
     DateTime.sunday,

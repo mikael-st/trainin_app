@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:train_in/service/globals.dart';
+import 'package:train_in/service/date.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/day_label.dart';
 import 'package:train_in/view/components/actions/options_btn.dart';
@@ -31,7 +31,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Color setLabelColor(int day) {
-    if (day == Globals.getToday()) {
+    if (day == Date.getToday()) {
       return Palette.white;
     } else {
       return Palette.details;
@@ -39,6 +39,5 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   }
   
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(120);
 }

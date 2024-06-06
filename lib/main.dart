@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:train_in/service/globals.dart';
+import 'package:train_in/service/date.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/pages/create_account.dart';
 import 'package:train_in/view/pages/edit_training.dart';
@@ -10,8 +10,7 @@ import 'package:train_in/view/pages/login.dart';
 import 'package:train_in/view/pages/main_page.dart';
 import 'package:train_in/view/pages/training.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   runApp(
     const App()
   );
@@ -29,7 +28,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    Globals.setToday(DateTime.now());
+    Date.setToday(DateTime.now());
   }
 
   @override

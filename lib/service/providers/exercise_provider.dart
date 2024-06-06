@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:train_in/service/config/enviroments.dart';
 
@@ -13,7 +14,16 @@ class ExerciseProvider {
     print('key: ${Env.key}\nhost: ${Env.host}');
   }
 
-  Future<List<dynamic>> getExercises() async {
+  Future<Uint8List> downloadImage({required String link}) async {
+    try {
+      final response = await dio.get(link);
+      return Uint8List.fromList(response.data);
+    } catch (err) {
+      throw Exception(err);
+    }
+  }
+
+  Future<List<Map<String, String>>> getExercises() async {
     try {
       final response = await dio.get('/exercises', queryParameters: {'limit': '0', 'offset': '0'});
       return response.data;
