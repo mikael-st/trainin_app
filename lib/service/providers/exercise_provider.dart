@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:train_in/service/config/enviroments.dart';
 
-class ExerciseImageProvider {
+class ExerciseProvider {
   final String path = 'https://exercisedb.p.rapidapi.com/';
   final Dio dio;
 
-  ExerciseImageProvider({required this.dio}) {
+  ExerciseProvider({required this.dio}) {
     dio.options.baseUrl = path;
-    dio.options.headers['x-rapidapi-key'] = 'ae60c37e15msh4aac83d595445f8p12d115jsn7ae58518e2d2';
-    dio.options.headers['x-rapidapi-host'] = 'exercisedb.p.rapidapi.com';
+    dio.options.headers['x-rapidapi-key'] = Env.key;
+    dio.options.headers['x-rapidapi-host'] = Env.host;
+
+    print('key: ${Env.key}\nhost: ${Env.host}');
   }
 
   Future<List<dynamic>> getExercises() async {
