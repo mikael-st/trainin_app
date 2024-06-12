@@ -1,15 +1,15 @@
 // import 'package:objectbox/objectbox.dart';
-import 'dart:typed_data';
 import 'package:train_in/objectbox.g.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
 import 'package:train_in/service/providers/exercise_provider.dart';
 
 class ExerciseRepository {
-  ExerciseProvider provider;
+  late ExerciseProvider _provider;
   late Store _store;
   String path;
 
-  ExerciseRepository({required this.provider, required this.path}){
+  ExerciseRepository({required provider, required this.path}){
+    _provider = provider;
     _store = Store(
       getObjectBoxModel(),
       directory: path
@@ -17,33 +17,35 @@ class ExerciseRepository {
   }
 
   Future<void> setExercises() async {
-    List<dynamic> list = await provider.getExercises();
-    
-    list.map(
-      (exercise) => Exercise(
-        id: int.parse(exercise['id']!),
-        name: exercise['name'] ?? 'NONE',
-        equipament: exercise['equipament'] ?? 'INDEFINIDO',
-        muscle: exercise['muscle'] ?? 'INDEFINIDO',
-        instructions: exercise['instructions'] ?? 'INDEFINIDO',
-        bitmapImage: _getImage(exercise['gitUrl'])
-      )
-    );
+    List<dynamic> list = await _provider.getExercises();
+    int id = 0;
+
+    for (var exercise in list) {
+      _provider.downloadImage(link: exercise['gifUrl']).then(
+        (image) {
+          print(exercise['gifUrl']);
+          final exerc = Exercise(
+            id: id,
+            name: exercise['name'],
+            equipment: exercise['equipment'],
+            muscle: exercise['target'],
+            instructions: exercise['instructions'].join(' '),
+            image: image
+          );
+
+          _store.box<Exercise>().put(exerc);
+        }
+      );
+    }
+
+    print('called');
   }
 
-  Stream<List<Exercise>> getExercises() {
+  List<Exercise> getLocalExercises() {
     return _store
         .box<Exercise>()
-        .query()
+        .getAll();/* query()
         .watch(triggerImmediately: true)
-        .map((value) => value.find());
-  }
-
-  Uint8List _getImage(String link) {
-    late Uint8List img;
-    provider.downloadImage(link: link).then(
-      (value) => img = value
-    );
-    return img;
+        .map((value) => value.find()); */
   }
 }

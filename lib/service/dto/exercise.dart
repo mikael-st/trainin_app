@@ -1,9 +1,19 @@
-import 'dart:ffi';
+import 'dart:typed_data';
 
-class Exercise {
-  late String name;
-  late String description;
-  late Uint8 bitmap;
-  late String target;
-  late List<String> assist;
+class ExerciseDTO {
+  late int id;
+  late String? name;
+  late String? description;
+  late Uint8List? image;
+  late String? target;
+  late List<String>? auxiliary;
+
+  ExerciseDTO({
+    required this.id,
+    this.name,
+    this.auxiliary,
+    this.description,
+    this.image,
+    this.target
+  });
 }

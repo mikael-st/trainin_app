@@ -7,30 +7,19 @@ class Exercise {
   @Id()
   int id;
   String name;
-  String equipament;
+  String equipment;
   String muscle;
   String instructions;
-  Uint8List bitmapImage;
+  Uint8List image;
 
-  Exercise({
+  Exercise ({
     required this.id,
     required this.name,
-    required this.equipament,
+    required this.equipment,
     required this.muscle,
     required this.instructions,
-    required this.bitmapImage
+    required this.image
   });
-
-  // factory ExerciseModel.create({required Map<String, String> obj, required Uint8List bitmap}){
-    // return ExerciseModel(
-      // id: int.parse(obj['id']!),
-      // name: obj['name'] ?? 'NONE',
-      // equipament: obj['equipament'] ?? 'INDEFINIDO',
-      // muscle: obj['muscle'] ?? 'INDEFINIDO',
-      // instructions: obj['instructions'] ?? 'INDEFINIDO',
-      // bitmapImage: bitmap
-    // );
-  // }
 }
 
 
