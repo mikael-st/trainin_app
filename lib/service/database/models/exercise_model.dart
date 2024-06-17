@@ -22,6 +22,19 @@ class Exercise {
   });
 }
 
+@Entity()
+class Image {
+  @Id()
+  int id;
+
+  Uint8List bytes;
+
+  Image({
+    this.id = 0,
+    required this.bytes
+  });
+}
+
 
 // bodyPart: waist,
 // equipment: body weight,

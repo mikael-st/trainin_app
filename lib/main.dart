@@ -28,19 +28,26 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  late List<Exercise> _list;
+  late Stream<List<Exercise>> _list;
   final initialize = ApplicationInitialize();
   bool hasBeenInitialize = false;
+
+  void _initialized() {
+    setState(() {
+      hasBeenInitialize = true;      
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     Date.setToday(DateTime.now());
     initialize.init().then(
-      (value) => setState(() {
-        _list = value;
-        hasBeenInitialize = true;
-    }));
+      (value) {
+        list = value;
+        _initialized();
+      }
+    );
   }
 
   @override
@@ -62,6 +69,36 @@ class _AppState extends State<App> {
         fontFamily: 'Montserrat',
       ),
       home: hasBeenInitialize
+              ? StreamBuilder(
+                  stream: _list,
+                  builder: (context, list) {
+                    if (!list.hasData) {
+                      return Center(
+                        child: Text(
+                          'Fetching Exercises',
+                          style: TextStyle(
+                            color: Palette.white
+                          ),
+                        ),
+                      );
+                    }
+                    return ExercisesPage(
+                      list: list.data!.map(
+                        (e) => ExerciseDTO(
+                          id: e.id,
+                          name: e.name,
+                          target: e.muscle,
+                          image: e.image
+                        )
+                      ).toList()
+                    );
+                  }
+                )
+              : Center(
+                child: CircularProgressIndicator(color: Palette.yellow)
+              )
+      
+      /* hasBeenInitialize
               ? ExercisesPage(
                       list: _list.map(
                         (e) => ExerciseDTO(
@@ -72,7 +109,7 @@ class _AppState extends State<App> {
                           )
                       ).toList()
                     )
-              : Center(child: CircularProgressIndicator(color: Palette.yellow)),
+              : Center(child: CircularProgressIndicator(color: Palette.yellow)), */
       // initialRoute: '/login',
       // getPages: [
         // GetPage(name: '/login', page: () => const LoginPage()),
@@ -81,7 +118,9 @@ class _AppState extends State<App> {
         // GetPage(name: '/training', page: () => const TrainingPage()),
         // GetPage(name: '/edit_training', page: () => EditTrainingPage())
       // ],
-    ),
+      ),
     );
   }
+
+  set list(Stream<List<Exercise>> value) => setState(() => _list = value);
 }

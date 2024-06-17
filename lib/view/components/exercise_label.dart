@@ -75,7 +75,6 @@ class ExerciseLabel extends StatelessWidget {
   }
 
   Widget _image(Uint8List bits) {
-    print('bits: ${bits.elementSizeInBytes}');
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(image: MemoryImage(bits), fit: BoxFit.cover)),

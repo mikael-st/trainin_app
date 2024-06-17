@@ -43,7 +43,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
           return ExerciseLabel(
             title: exercises[index].name!,
             subtitle: exercises[index].target!,
-            leading: exercises[index].image,
+            leading: exercises[index].image!,
             trealing: Icon(Icons.add, color: Palette.white, size: 20),
           );
         }

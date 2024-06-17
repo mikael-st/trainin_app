@@ -14,15 +14,12 @@ class ExerciseProvider {
     // print('key: ${Env.key}\nhost: ${Env.host}');
   }
 
-  Future<Uint8List> downloadImage({required String link}) async {
+  Future<void> download({required String link, required String path}) async {
     try {
-      final response = await dio.get(
+      await dio.download(
         link,
-        options: Options(
-          responseType: ResponseType.bytes
-        )
+        path,
       );
-      return response.data;
     } catch (err) {
       throw Exception(err);
     }
@@ -30,7 +27,7 @@ class ExerciseProvider {
 
   Future<List<dynamic>> getExercises() async {
     try {
-      final response = await dio.get('/exercises', queryParameters: {'limit': '0', 'offset': '0'});
+      final response = await dio.get('/exercises', queryParameters: {'limit': '10', 'offset': '10'});
       return response.data;
     } catch (err) {
       throw Exception(err);
