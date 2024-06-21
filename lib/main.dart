@@ -82,7 +82,19 @@ class _AppState extends State<App> {
                         ),
                       );
                     }
-                    return ExercisesPage(
+                    return Container(
+                      alignment: Alignment.center,
+                      width: 52,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: MemoryImage(list.data![0].image),
+                          fit: BoxFit.cover
+                        )
+                      ),
+                    );
+                    
+                    /* ExercisesPage(
                       list: list.data!.map(
                         (e) => ExerciseDTO(
                           id: e.id,
@@ -91,7 +103,7 @@ class _AppState extends State<App> {
                           image: e.image
                         )
                       ).toList()
-                    );
+                    ); */
                   }
                 )
               : Center(

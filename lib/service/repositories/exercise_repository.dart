@@ -21,8 +21,31 @@ class ExerciseRepository {
     );
   }
 
+  // Future<void> defineImgs() async {
+  //   final dir = await getTemporaryDirectory();
+  //   print(dir.path);
+
+  //   final resp = await _provider.getExercises();
+  //   Map<String, dynamic> e = resp[0];
+
+  //   for (var e in resp) {
+  //     final path = join( dir.path, 'images', '${e['gifUrl']!}.gif' );
+      
+  //     await _provider.download(
+  //       link: e['gifUrl']!,
+  //       path: path,
+  //     );
+
+  //     final image = ImageModel(
+  //       bytes: await imageToUint8List(path)
+  //     );
+  //     _store.box<ImageModel>().put(image);
+  //   }
+  // }
+
   Future<void> define() async {
     List<dynamic> list = await _provider.getExercises();
+
     final dir = await getTemporaryDirectory();
     String path = join(dir.path, 'images');
 
@@ -37,7 +60,6 @@ class ExerciseRepository {
       );
 
       final image = await imageToUint8List( join( path, '${exercise['id']!}'));
-      print(image);
 
       final exerc = Exercise(
         id: 0,
@@ -63,11 +85,11 @@ class ExerciseRepository {
 
   Future<Uint8List> imageToUint8List(String path) async {
     File gif = File(path);
-    
+
     if (await gif.exists()) {
       Uint8List bytes = await gif.readAsBytes();
       await gif.delete();
-      return bytes;
+      return bytes; 
     }
     return Uint8List(0);
   }
@@ -79,4 +101,12 @@ class ExerciseRepository {
         .watch(triggerImmediately: true)
         .map((value) => value.find());
   }
+
+  // Stream<List<ImageModel>> getImages() {
+  //   return _store
+  //           .box<ImageModel>()
+  //           .query()
+  //           .watch(triggerImmediately: true)
+  //           .map((value) => value.find());
+  // }
 }

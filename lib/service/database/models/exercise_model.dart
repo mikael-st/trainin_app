@@ -23,13 +23,13 @@ class Exercise {
 }
 
 @Entity()
-class Image {
+class ImageModel {
   @Id()
   int id;
 
   Uint8List bytes;
 
-  Image({
+  ImageModel({
     this.id = 0,
     required this.bytes
   });

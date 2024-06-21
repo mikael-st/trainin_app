@@ -41,16 +41,36 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:2189020107704473694",
+      "lastPropertyId": "2:2752389293798375670",
+      "name": "ImageModel",
+      "properties": [
+        {
+          "id": "1:6566145458049468725",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2752389293798375670",
+          "name": "bytes",
+          "type": 23
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "2:8514004558932840662",
+  "lastEntityId": "4:2189020107704473694",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [
-    4163849042443767316
+    4163849042443767316,
+    7817946197119338971
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
@@ -61,7 +81,9 @@
     6326520059146749360,
     3427009232190292104,
     2312554344028651582,
-    7866182847380482651
+    7866182847380482651,
+    4023760975451246161,
+    2652838314321993187
   ],
   "retiredRelationUids": [],
   "version": 1

@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:train_in/service/dto/exercise.dart';
 import 'package:train_in/view/assets/palette.dart';
@@ -13,6 +11,7 @@ class ExercisesPage extends StatefulWidget {
 
   ExercisesPage({super.key, required list}){
     _list = list;
+    print(list[0]);
   }
 
   @override
