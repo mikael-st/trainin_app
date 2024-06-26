@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:train_in/service/config/enviroments.dart';
+import 'package:train_in/service/config/env.dart';
 
 class ExerciseProvider {
   final String path = 'https://exercisedb.p.rapidapi.com/';
@@ -26,7 +26,7 @@ class ExerciseProvider {
 
   Future<List<dynamic>> getExercises() async {
     try {
-      final response = await dio.get('/exercises', queryParameters: {'limit': '10', 'offset': '10'});
+      final response = await dio.get('/exercises', queryParameters: {'limit': '10', 'offset': '0'});
       return response.data;
     } catch (err) {
       throw Exception(err);

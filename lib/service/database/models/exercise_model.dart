@@ -9,7 +9,7 @@ class Exercise {
   String name;
   String equipment;
   String muscle;
-  String instructions;
+  List<String> instructions;
   Uint8List image;
 
   Exercise ({
@@ -21,20 +21,6 @@ class Exercise {
     required this.image
   });
 }
-
-@Entity()
-class ImageModel {
-  @Id()
-  int id;
-
-  Uint8List bytes;
-
-  ImageModel({
-    this.id = 0,
-    required this.bytes
-  });
-}
-
 
 // bodyPart: waist,
 // equipment: body weight,

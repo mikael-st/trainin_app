@@ -6,16 +6,20 @@ import 'package:train_in/service/repositories/exercise_repository.dart';
 import 'package:path/path.dart';
 
 class ApplicationInitialize {
-  Future<Stream<List<Exercise>>> init() async {
+  late Stream<List<Exercise>> _exercises;
+
+  Future<void> init() async {
     final dir = await getApplicationDocumentsDirectory();
     
-    final repository = ExerciseRepository(provider: ExerciseProvider(dio: Dio()), path: join(dir.path, 'localdata'));
-    final list = repository.getLocalExercises();
+    // final repository = ExerciseRepository(provider: ExerciseProvider(dio: Dio()), path: join(dir.path, 'localdata'));
+    // _exercises = repository.getLocalExercises();
 
-    // if (list.isEmpty) {
-      await repository.define();
+    // if (isEmpty) {
+      // await repository.define();
     // }
-
-    return list;
   }
+
+  
+
+  get exercises => _exercises;
 }

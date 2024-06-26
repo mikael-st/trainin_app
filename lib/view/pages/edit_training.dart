@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/repositories/exercise_repository.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/button.dart';
 import 'package:train_in/view/components/exercise_label.dart';
 import 'package:train_in/view/components/headers/edit_training_header.dart';
 
-
+// ignore: must_be_immutable
 class EditTrainingPage extends StatelessWidget {
-  EditTrainingPage({super.key});
-
   final List<String> days = ['Dom', 'Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab'];
+  late ExerciseRepository _repository;
+
+  EditTrainingPage({super.key, required ExerciseRepository repository}){
+    _repository = repository;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class EditTrainingPage extends StatelessWidget {
 
   Widget _exercises() {
     return Column(
-      children: List.generate(5, (index) => const ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
+      children: List.generate(5, (index) => Container()/* const ExerciseLabel(title: '{nome}', subtitle: '{0} series') */),
     );
   }
 }

@@ -10,38 +10,12 @@ import 'package:path/path.dart';
 
 class ExerciseRepository {
   late ExerciseProvider _provider;
-  late Store _store;
-  String path;
+  late Box<Exercise> _box;
 
-  ExerciseRepository({required provider, required this.path}){
+  ExerciseRepository({required ExerciseProvider provider, required Box<Exercise> box}){
     _provider = provider;
-    _store = Store(
-      getObjectBoxModel(),
-      directory: path
-    );
+    _box = box;
   }
-
-  // Future<void> defineImgs() async {
-  //   final dir = await getTemporaryDirectory();
-  //   print(dir.path);
-
-  //   final resp = await _provider.getExercises();
-  //   Map<String, dynamic> e = resp[0];
-
-  //   for (var e in resp) {
-  //     final path = join( dir.path, 'images', '${e['gifUrl']!}.gif' );
-      
-  //     await _provider.download(
-  //       link: e['gifUrl']!,
-  //       path: path,
-  //     );
-
-  //     final image = ImageModel(
-  //       bytes: await imageToUint8List(path)
-  //     );
-  //     _store.box<ImageModel>().put(image);
-  //   }
-  // }
 
   Future<void> define() async {
     List<dynamic> list = await _provider.getExercises();
@@ -66,14 +40,20 @@ class ExerciseRepository {
         name: exercise['name'],
         equipment: exercise['equipment'],
         muscle: exercise['target'],
-        instructions: exercise['instructions'].join(' '),
+        instructions: jsonToStringArray(exercise['instructions']),
         image: image
       );
       
-      _store.box<Exercise>().put(exerc);
+      _box.put(exerc);
     }
     
     print('called');
+  }
+
+  List<String> jsonToStringArray(List<dynamic> list) {
+    final stringList = list.cast<String>().toList();
+
+    return stringList;
   }
 
   Future _downloadImage({required String path, required String link}) async {
@@ -95,18 +75,13 @@ class ExerciseRepository {
   }
 
   Stream<List<Exercise>> getLocalExercises() {
-    return _store
-        .box<Exercise>()
+    return _box
         .query()
         .watch(triggerImmediately: true)
         .map((value) => value.find());
   }
 
-  // Stream<List<ImageModel>> getImages() {
-  //   return _store
-  //           .box<ImageModel>()
-  //           .query()
-  //           .watch(triggerImmediately: true)
-  //           .map((value) => value.find());
-  // }
+  Exercise? find({required int id}) {
+    return _box.get(id);
+  }
 }

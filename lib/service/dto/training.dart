@@ -1,4 +1,4 @@
-import 'package:train_in/service/dto/exercise.dart';
+import 'package:train_in/service/dto/exerciseDTO.dart';
 
 class Training {
   late String name;

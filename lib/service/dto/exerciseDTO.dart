@@ -3,8 +3,9 @@ import 'dart:typed_data';
 class ExerciseDTO {
   late int id;
   late String? name;
-  late String? instructions;
+  late List<String>? instructions;
   late Uint8List? image;
+  late String? equipment;
   late String? target;
   late List<String>? auxiliary;
 
@@ -14,7 +15,8 @@ class ExerciseDTO {
     this.auxiliary,
     this.instructions,
     this.image,
-    this.target
+    this.target,
+    this.equipment
   });
 
   @override
