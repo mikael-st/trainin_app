@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
@@ -14,12 +15,12 @@ class MyWorkoutsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BackHeader(),
-      body: _main(),
+      body: _main(context),
       floatingActionButton: AddButton(callback: () => showModalBottomSheet(context: context, builder: (BuildContext context) => const CreateTraining())),
     );
   }
 
-  Widget _main() {
+  Widget _main(BuildContext context) {
     return Container(
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
@@ -28,7 +29,7 @@ class MyWorkoutsPage extends StatelessWidget {
         child: Column(
           children: [
             const AreaLabel(text: 'Seus Treinos'),
-            _training()
+            _training(context)
           ],
         ),
       )
@@ -44,9 +45,9 @@ class MyWorkoutsPage extends StatelessWidget {
     );
   }
 
-  Widget _training() {
+  Widget _training(BuildContext ctx) {
     return Column(
-      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {00} exercícios   •   {000} kcal', callback: () => Get.toNamed('/training'))),
+      children: List.generate(5, (index) => TrainingLabel(title: '{nome}', subtitle: '{00} min   •   {00} exercícios   •   {000} kcal', callback: () => Navigator.of(ctx).pushNamed('/training'))),
     );
   }
 }

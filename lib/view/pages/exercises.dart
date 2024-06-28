@@ -1,10 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:train_in/service/app_initialize.dart';
-import 'package:train_in/service/database/database.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
-import 'package:train_in/service/dto/exerciseDTO.dart';
-import 'package:train_in/service/providers/exercise_provider.dart';
 import 'package:train_in/service/repositories/exercise_repository.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/exercise_label.dart';
@@ -24,7 +19,7 @@ class ExercisesPage extends StatefulWidget {
 }
 
 class _ExercisesPageState extends State<ExercisesPage> {
-  // late Stream<List<Exercise>> _list;
+  final List<Exercise> _selected = [];
 
   @override
   void initState() {
@@ -43,12 +38,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
     return StreamBuilder(
       stream: widget._repository.getLocalExercises(),
       builder: (context, list) {
-        if (!list.hasData) {
-          Center(
-            child: CircularProgressIndicator(color: Palette.yellow)
-          );
+        if (list.hasData) {
+          return _content(list.data!);
         }
-        return _content(list.data!);
+        return Center(
+          child: CircularProgressIndicator(color: Palette.yellow)
+        );
       }
     );
   }
@@ -56,15 +51,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
   Widget _content(List<Exercise> exercises) {
     return Container(
       child: ListView.builder(
-        itemCount: /* widget._list.length */ 1,
+        itemCount: exercises.length,
         itemBuilder: (context, index) {
-          print(exercises[index]);
           return ExerciseLabel(
-            title: exercises[index].name,
-            subtitle: exercises[index].muscle,
-            leading: exercises[index].image,
-            trealing: Icon(Icons.add, color: Palette.white, size: 20),
-            getExercise: () => widget._repository.find(id: exercises[index].id),
+            exercise: exercises[index],
+            trealing: Icon(Icons.add, color: Palette.white, size: 24),
+            callback: () => {_selected.add(exercises[index]), print(_selected)},
           );
         }
       )
@@ -76,48 +68,3 @@ class _ExercisesPageState extends State<ExercisesPage> {
     super.dispose();
   }
 }
-
-/* @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SelectExerciseHeader(),
-      body: hasBeenInitialize
-              ? StreamBuilder(
-                  stream: _list,
-                  builder: (context, list) {
-                    if (!list.hasData) {
-                      return Center(
-                        child: Text(
-                          'Fetching Exercises',
-                          style: TextStyle(
-                          color: Palette.white
-                        ),
-                      ),
-                    );
-                  } else {
-                    return _main();
-                  }
-                })
-              : Center(
-                child: CircularProgressIndicator(color: Palette.yellow)
-              )
-      );
-  } */
-
-/* Widget _content(Stream<List<Exercise>> exercises) {
-    return Container(
-      child: ListView.builder(
-        controller: _controller,
-        itemCount: /* widget._list.length */ 1,
-        itemBuilder: (context, index) {
-          print(exercises[index]);
-          return ExerciseLabel(
-            title: exercises[index].name!,
-            subtitle: exercises[index].target!,
-            leading: exercises[index].image!,
-            trealing: Icon(Icons.add, color: Palette.white, size: 20),
-          );
-        }
-      )
-    );
-  } */

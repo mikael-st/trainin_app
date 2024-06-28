@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/button.dart';
 import 'package:train_in/view/components/exercise_label.dart';
@@ -13,6 +14,7 @@ class TrainingPage extends StatelessWidget {
     return Scaffold(
         appBar: const TrainingHeader(),
         body: _main(),
+        floatingActionButton: AddButton(callback: () => Navigator.of(context).pushNamed('/exercises')),
       );
   }
 
@@ -36,7 +38,7 @@ class TrainingPage extends StatelessWidget {
 
   Widget _exercises() {
     return Column(
-      children: List.generate(5, (index) => const ExerciseLabel(title: '{nome}', subtitle: '{0} series')),
+      children: List.generate(5, (index) => Container()/* const ExerciseLabel(title: '{nome}', subtitle: '{0} series') */),
     );
   }
 }

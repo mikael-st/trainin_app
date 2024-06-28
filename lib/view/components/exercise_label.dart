@@ -1,22 +1,26 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:train_in/service/dto/exerciseDTO.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:train_in/service/database/models/exercise_model.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/modals/exercise_infos.dart';
 
 class ExerciseLabel extends StatelessWidget {
-  final String title, subtitle;
+  // final String title, subtitle;
   final Icon? trealing;
-  final Uint8List? leading;
-  final Function() getExercise;
+  // final Uint8List? leading;
+  final Exercise exercise;
+  final Function() callback;
   const ExerciseLabel({
     super.key,
-    required this.title,
-    required this.subtitle,
-    required this.getExercise,
+    required this.exercise,
+    required this.callback,
     this.trealing,
-    this.leading
+    // required this.title,
+    // required this.subtitle,
+    // required this.getExercise,
+    // this.leading
   });
 
   @override
@@ -24,9 +28,9 @@ class ExerciseLabel extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // show modal page with infos about the exercise
-        final result = getExercise.call();
+        // final result = getExercise.call();
         showDialog(context: context, builder: (BuildContext context) {
-          return ExerciseInfosModal();
+          return ExerciseInfosModal(exercise: exercise);
         });
       },
       onLongPress: () {
@@ -54,7 +58,7 @@ class ExerciseLabel extends StatelessWidget {
     return ConstrainedBox(
         constraints: const BoxConstraints(
             minHeight: 68, maxHeight: 68, minWidth: 68, maxWidth: 68),
-        child: leading != null ? _image(leading!) : _undefinedImage());
+        child: /* leading */exercise.image != Uint8List(0) ? _image(exercise.image) : _undefinedImage());
   }
 
   Widget _text() {
@@ -63,8 +67,8 @@ class ExerciseLabel extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10),
       child:
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(title, overflow: TextOverflow.ellipsis, style: TextStyle( color: Palette.white, fontSize: 14, fontWeight: FontWeight.bold)),
-          Text(subtitle, style: TextStyle(color: Palette.yellow, fontSize: 12))
+          Text(exercise.name, overflow: TextOverflow.ellipsis, style: TextStyle( color: Palette.white, fontSize: 14, fontWeight: FontWeight.bold)),
+          Text(exercise.muscle, style: TextStyle(color: Palette.yellow, fontSize: 12))
         ]
       )
     );
@@ -73,7 +77,7 @@ class ExerciseLabel extends StatelessWidget {
   Widget _trealing() {
     return IconButton(
       onPressed: () {
-        // add exercise on list
+        callback.call();
       },
       icon: trealing ?? Container(),
       style: IconButton.styleFrom(

@@ -10,7 +10,7 @@ class EditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: (){
-        Get.toNamed('/edit_training');
+        Navigator.of(context).pushNamed('/edit_training');
       },
       style: IconButton.styleFrom(
         shape: const RoundedRectangleBorder(),

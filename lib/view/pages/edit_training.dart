@@ -8,11 +8,11 @@ import 'package:train_in/view/components/headers/edit_training_header.dart';
 // ignore: must_be_immutable
 class EditTrainingPage extends StatelessWidget {
   final List<String> days = ['Dom', 'Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab'];
-  late ExerciseRepository _repository;
+  // late ExerciseRepository _repository;
 
-  EditTrainingPage({super.key, required ExerciseRepository repository}){
+  EditTrainingPage({super.key, /* required ExerciseRepository repository */})/* {
     _repository = repository;
-  }
+  } */;
 
   @override
   Widget build(BuildContext context) {
