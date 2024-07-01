@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/utils/page_state.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
@@ -10,6 +11,7 @@ class BackBtn extends StatelessWidget {
     return IconButton(
       onPressed: (){
         Navigator.of(context).pop();
+        PageStateManager.actual.value = PageStateManager.previous;
       },
       style: IconButton.styleFrom(
         shape: const RoundedRectangleBorder(),

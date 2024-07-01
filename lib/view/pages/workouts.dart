@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:path/path.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/headers/back_header.dart';
 import 'package:train_in/view/components/modals/create_training.dart';
+import 'package:train_in/view/components/navbar.dart';
 import 'package:train_in/view/components/training_label.dart';
 
 class MyWorkoutsPage extends StatelessWidget {
@@ -16,6 +15,7 @@ class MyWorkoutsPage extends StatelessWidget {
     return Scaffold(
       appBar: const BackHeader(),
       body: _main(context),
+      bottomNavigationBar: NavBar(),
       floatingActionButton: AddButton(callback: () => showModalBottomSheet(context: context, builder: (BuildContext context) => const CreateTraining())),
     );
   }

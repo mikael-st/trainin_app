@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/headers/header.dart';
+import 'package:train_in/view/components/navbar.dart';
 import 'package:train_in/view/components/training_box.dart';
 import 'package:train_in/view/components/training_label.dart';
 
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: Header(),
         body: _main(),
-        // bottomNavigationBar: NavBar(),
+        bottomNavigationBar: NavBar(),
       );
   }
 

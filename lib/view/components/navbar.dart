@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:train_in/service/go_to.dart';
+import 'package:train_in/service/utils/page_state.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
 class NavBar extends StatefulWidget {
-
   const NavBar({super.key});
 
   @override
@@ -12,13 +11,13 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int index = 0;
+  List<PageState> pages = [PageState.home, PageState.training, PageState.profile];
 
   @override
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: Palette.yellow, width: 2))),
+          border: Border(top: BorderSide(color: Palette.yellow, width: 2))),
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
             labelTextStyle: WidgetStateProperty.all(
@@ -30,10 +29,9 @@ class _NavBarState extends State<NavBar> {
           ),
           child: NavigationBar(
           onDestinationSelected: (value) {
-            setState(() {
-              index = value;
-            });
-            Go.to(value, context);
+            PageStateManager.previous = PageStateManager.actual.value;
+            PageStateManager.actual.value = pages[value];
+            Navigator.of(context).pushNamed(PageStateManager.actual.value.page.route);
           },
           destinations: [
             NavigationDestination(
@@ -49,7 +47,7 @@ class _NavBarState extends State<NavBar> {
               label: 'Perfil',
             )
           ],
-          selectedIndex: index,
+          selectedIndex: PageStateManager.actual.value.page.index,
           backgroundColor: Palette.items,
           indicatorColor: Palette.yellow,
         )),

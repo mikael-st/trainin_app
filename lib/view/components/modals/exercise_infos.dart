@@ -2,20 +2,53 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
 import 'package:train_in/view/assets/palette.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ExerciseInfosModal extends StatelessWidget {
-  final Exercise exercise;
+class ExerciseInfos extends StatelessWidget {
+  // final Exercise exercise;
 
-  const ExerciseInfosModal({super.key, required this.exercise});
+  const ExerciseInfos({super.key, /* required this.exercise */});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 50),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    final Exercise exercise = ModalRoute.of(context)?.settings.arguments as Exercise;
+    return Scaffold();
+  }
+
+  _header(BuildContext c, { required String text }) {
+    return Container();
+  }
+
+  Widget _content({
+    required String target,
+    required String equipment,
+    required List<String> instructions,
+    required Uint8List image
+  }) {
+    return Container();
+  }
+
+  Widget _item({ required String label, required String value }) {
+    return Container();
+  }
+
+  Widget _instructions(List<String> instructions) {
+    return Container();
+  }
+
+  Widget _image(Uint8List bits) {
+    return Container();
+  }
+
+  Widget _button() {
+    return Container();
+  }
+}
+/* 
+_main() {
+  Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(12)),
           color: Palette.items,
@@ -33,9 +66,9 @@ class ExerciseInfosModal extends StatelessWidget {
           ],
         ),
       );
-  }
+} */
 
-  _header(BuildContext c, { required String text }) {
+/* _header(BuildContext c, { required String text }) {
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
@@ -122,5 +155,4 @@ class ExerciseInfosModal extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } */

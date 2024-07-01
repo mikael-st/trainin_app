@@ -24,6 +24,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   @override
   void initState() {
     super.initState();
+    widget._repository.define();
   }
 
   @override

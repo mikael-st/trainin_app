@@ -1,10 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
 import 'package:train_in/view/assets/palette.dart';
-import 'package:train_in/view/components/modals/exercise_infos.dart';
 
 class ExerciseLabel extends StatelessWidget {
   // final String title, subtitle;
@@ -29,9 +27,10 @@ class ExerciseLabel extends StatelessWidget {
       onTap: () {
         // show modal page with infos about the exercise
         // final result = getExercise.call();
-        showDialog(context: context, builder: (BuildContext context) {
-          return ExerciseInfosModal(exercise: exercise);
-        });
+        // showDialog(context: context, builder: (BuildContext context) {
+        //   return ExerciseInfos(exercise: exercise);
+        // });
+        Navigator.of(context).pushNamed('/exercise_info', arguments: exercise);
       },
       onLongPress: () {
         // show options

@@ -5,6 +5,7 @@ import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/headers/back_header.dart';
 import 'package:train_in/view/components/button.dart';
+import 'package:train_in/view/components/navbar.dart';
 import 'package:train_in/view/components/stat_label.dart';
 import 'package:train_in/view/components/training_label.dart';
 
@@ -16,7 +17,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: const BackHeader(),
       body: _main(context),
-      // bottomNavigationBar: NavBar(),
+      bottomNavigationBar: NavBar(),
       floatingActionButton: AddButton(callback: (){})
     );
   }
