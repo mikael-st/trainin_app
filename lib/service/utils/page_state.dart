@@ -10,12 +10,8 @@ enum PageState {
 }
 
 abstract class PageStateManager {
-  static final actual = ValueNotifier<PageState>(PageState.home);
-  static PageState previous = actual.value;
-
-  static void log() {
-    print('previous: $previous\nactual: $actual');
-  }
+  static final current = ValueNotifier<PageState>(PageState.home);
+  static PageState previous = current.value;
 }
 
 class PageValues {

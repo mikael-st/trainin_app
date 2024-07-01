@@ -29,9 +29,9 @@ class _NavBarState extends State<NavBar> {
           ),
           child: NavigationBar(
           onDestinationSelected: (value) {
-            PageStateManager.previous = PageStateManager.actual.value;
-            PageStateManager.actual.value = pages[value];
-            Navigator.of(context).pushNamed(PageStateManager.actual.value.page.route);
+            PageStateManager.previous = PageStateManager.current.value;
+            PageStateManager.current.value = pages[value];
+            Navigator.of(context).pushNamed(PageStateManager.current.value.page.route);
           },
           destinations: [
             NavigationDestination(
@@ -47,7 +47,7 @@ class _NavBarState extends State<NavBar> {
               label: 'Perfil',
             )
           ],
-          selectedIndex: PageStateManager.actual.value.page.index,
+          selectedIndex: PageStateManager.current.value.page.index,
           backgroundColor: Palette.items,
           indicatorColor: Palette.yellow,
         )),

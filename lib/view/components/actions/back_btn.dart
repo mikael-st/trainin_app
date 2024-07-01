@@ -11,7 +11,7 @@ class BackBtn extends StatelessWidget {
     return IconButton(
       onPressed: (){
         Navigator.of(context).pop();
-        PageStateManager.actual.value = PageStateManager.previous;
+        PageStateManager.current.value = PageStateManager.previous;
       },
       style: IconButton.styleFrom(
         shape: const RoundedRectangleBorder(),
