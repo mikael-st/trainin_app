@@ -1,16 +1,22 @@
-// import 'package:objectbox/objectbox.dart';
-// import 'package:train_in/service/dto/exercise.dart';
+import 'package:objectbox/objectbox.dart';
+import 'package:train_in/service/database/models/exercise_model.dart';
 
-// @Entity()
-// class TrainingModel {
-//   String id;
-//   String name;
-//   List<int> days;
+@Entity()
+class Training {
+  @Id()
+  int id;
+  String name;
+  List<int> days;
 
-//   TrainingModel({
-//     required this.id,
-//     required this.name,
-//     required this.days,
-//     // required this.exercises
-//   });
-// }
+  bool done;
+  DateTime? donedAt;
+
+  final exercises = ToMany<Exercise>();
+
+  Training({
+    this.id = 0,
+    required this.name,
+    required this.days,
+    this.done = false
+  });
+}

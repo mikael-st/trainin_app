@@ -37,7 +37,7 @@ class _SelectExerciseHeaderState extends State<SelectExerciseHeader> {
               });
             },
           ),
-          DoneButton()
+          // DoneButton()
         ],
       )
     );

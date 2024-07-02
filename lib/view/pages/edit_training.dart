@@ -32,7 +32,7 @@ class EditTrainingPage extends StatelessWidget {
         child: Column(
           children: [
             const AreaLabel(text: 'Exercícios'),
-            Button(content: 'Adicionar exercício', padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 12), callback: (){}),
+            Button(content: 'Concluir', padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 12), callback: (){}),
             _exercises()
           ],
         ),

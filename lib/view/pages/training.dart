@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/button.dart';
@@ -11,8 +12,9 @@ class TrainingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Training training = ModalRoute.of(context)?.settings.arguments as Training;
     return Scaffold(
-        appBar: const TrainingHeader(),
+        appBar: TrainingHeader(infos: training),
         body: _main(),
         floatingActionButton: AddButton(callback: () => Navigator.of(context).pushNamed('/exercises')),
       );

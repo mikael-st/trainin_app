@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:train_in/service/database/database.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/service/date.dart';
 import 'package:train_in/service/providers/exercise_provider.dart';
 import 'package:train_in/service/repositories/exercise_repository.dart';
+import 'package:train_in/service/repositories/training_repository.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/modals/exercise_infos.dart';
 import 'package:train_in/view/pages/create_account.dart';
@@ -33,7 +35,8 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final _database = DB();
-  late ExerciseRepository _repository;
+  late ExerciseRepository _exerciseRepo;
+  late TrainingRepository _trainingRepo;
   bool hasBeenInitialize = false;
 
 
@@ -43,7 +46,8 @@ class _AppState extends State<App> {
     Date.setToday(DateTime.now());
     _database.init().then(
       (v) => setState(() {
-        _repository = ExerciseRepository(provider: ExerciseProvider(dio: Dio()), box: _database.store.box<Exercise>());
+        _exerciseRepo = ExerciseRepository(provider: ExerciseProvider(dio: Dio()), box: _database.store.box<Exercise>());
+        _trainingRepo = TrainingRepository(box: _database.store.box<Training>());
         hasBeenInitialize = true;
       })
     );
@@ -77,12 +81,12 @@ class _AppState extends State<App> {
         routes: {
           '/login': (context) => LoginPage(),
           '/create_account': (context) => CreateAccountPage(),
-          '/home': (context) => hasBeenInitialize ? HomePage() : Center( child: CircularProgressIndicator( color: Palette.yellow )),
-          '/my_workouts': (context) => MyWorkoutsPage(),
+          '/home': (context) => hasBeenInitialize ? HomePage(repository: _trainingRepo) : Center( child: CircularProgressIndicator( color: Palette.yellow )),
+          '/my_workouts': (context) => MyWorkoutsPage(repository: _trainingRepo),
           '/profile': (context) => ProfilePage(),
           '/training': (context) => TrainingPage(),
           '/edit_training': (context) => EditTrainingPage(),
-          '/exercises': (context) => ExercisesPage(repository: _repository),
+          '/exercises': (context) => ExercisesPage(repository: _exerciseRepo),
           '/exercise_info': (context) => ExerciseInfos()
         },
       ),
