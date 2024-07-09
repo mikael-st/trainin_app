@@ -51,6 +51,10 @@ class TrainingRepository {
       .map((v) => v.find());
   }
 
+  Stream<Training> watch(int id) {
+    return _box.query(Training_.id.equals(id)).watch(triggerImmediately: true).cast<Training>();
+  }
+
   Training? find(int id) {
     return _box.get(id);
   }
@@ -58,7 +62,7 @@ class TrainingRepository {
   Stream<List<Training>> getDoned() {
     return _box
       .query(Training_.done.equals(true))
-      .watch()
+      .watch(triggerImmediately: true)
       .map((v) => v.find());
   }
 }

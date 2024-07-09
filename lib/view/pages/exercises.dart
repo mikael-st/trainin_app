@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/service/repositories/exercise_repository.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/exercise_label.dart';
@@ -24,7 +25,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   @override
   void initState() {
     super.initState();
-    widget._repository.define();
+    // widget._repository.define();
   }
 
   @override
@@ -57,7 +58,13 @@ class _ExercisesPageState extends State<ExercisesPage> {
           return ExerciseLabel(
             exercise: exercises[index],
             trealing: Icon(Icons.add, color: Palette.white, size: 24),
-            callback: () => {_selected.add(exercises[index]), print(_selected)},
+            callback: () => {
+              widget._repository.addToTraining(
+                exerciseId: exercises[index].id,
+                training: ModalRoute.of(context)?.settings.arguments as Training
+              ),
+              _selected.add(exercises[index]), print(_selected)
+            },
           );
         }
       )

@@ -85,7 +85,7 @@ class _AppState extends State<App> {
           '/my_workouts': (context) => MyWorkoutsPage(repository: _trainingRepo),
           '/profile': (context) => ProfilePage(),
           '/training': (context) => TrainingPage(),
-          '/edit_training': (context) => EditTrainingPage(),
+          '/edit_training': (context) => EditTrainingPage(repository: _trainingRepo),
           '/exercises': (context) => ExercisesPage(repository: _exerciseRepo),
           '/exercise_info': (context) => ExerciseInfos()
         },

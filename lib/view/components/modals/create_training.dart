@@ -87,7 +87,7 @@ class _CreateTrainingState extends State<CreateTraining> {
             onPressed: (){
               final id = widget._repository.create(name: textController.text, days: days.where((value) => value.isChecked == true).map((value) => days.indexOf(value)).toList());
               Navigator.of(context).pop();
-              Navigator.of(context).pushNamed('/training', arguments: widget._repository.find(id));
+              Navigator.of(context).pushNamed('/training', arguments: widget._repository.watch(id));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Palette.transparent,

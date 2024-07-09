@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/database/models/exercise_model.dart';
 import 'package:train_in/service/database/models/training_model.dart';
+import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/actions/add_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/button.dart';
@@ -12,15 +14,29 @@ class TrainingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Training training = ModalRoute.of(context)?.settings.arguments as Training;
-    return Scaffold(
-        appBar: TrainingHeader(infos: training),
-        body: _main(),
-        floatingActionButton: AddButton(callback: () => Navigator.of(context).pushNamed('/exercises')),
-      );
+    final Stream<Training> stream = ModalRoute.of(context)?.settings.arguments as Stream<Training>;
+    return StreamBuilder(
+      stream: stream,
+      builder: (context, training) {
+        if (training.hasData) {
+          return _content(context, training: training.data!);
+        }
+        return Center(
+          child: CircularProgressIndicator(color: Palette.yellow),
+        );
+      }
+    );
   }
 
-  Widget _main() {
+  Widget _content(BuildContext context ,{required Training training}) {
+    return Scaffold(
+      appBar: TrainingHeader(infos: training),
+      body: _main(training),
+      floatingActionButton: AddButton(callback: () => Navigator.of(context).pushNamed('/exercises', arguments: training)),
+    );
+  }
+
+  Widget _main(Training training) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       alignment: Alignment.topCenter,
@@ -31,16 +47,25 @@ class TrainingPage extends StatelessWidget {
           children: [
             Button(content: 'Começar', padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 120), callback: (){}),
             const AreaLabel(text: 'Exercícios'),
-            _exercises()
+            training.exercises.isEmpty ? _noExercises() : _exercises(training.exercises)
           ],
         ),
       ),
     );
   }
 
-  Widget _exercises() {
+  Widget _noExercises() {
+    return Container(
+      margin: EdgeInsets.only(top: 100),
+      child: Text('Este treino não possui exercícios.', style: TextStyle(color: Palette.white)),
+    );
+  }
+
+  Widget _exercises(List<Exercise> exercises) {
     return Column(
-      children: List.generate(5, (index) => Container()/* const ExerciseLabel(title: '{nome}', subtitle: '{0} series') */),
+      children: List.generate(
+        exercises.length,
+        (index) => ExerciseLabel(exercise: exercises[index], callback: (){})),
     );
   }
 }

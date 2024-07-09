@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:objectbox/objectbox.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 
 @Entity()
 class Exercise {
@@ -11,6 +12,9 @@ class Exercise {
   String muscle;
   List<String> instructions;
   Uint8List image;
+
+  @Backlink()
+  final trainings = ToMany<Training>();
 
   Exercise ({
     required this.id,

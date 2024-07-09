@@ -19,7 +19,7 @@ class TrainingHeader extends StatelessWidget implements PreferredSizeWidget {
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(8))),
         backgroundColor: Palette.items,
         leading: const BackBtn(),
-        actions: const [EditButton()],
+        actions: [ EditButton(trainingId: infos.id) ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: Container(

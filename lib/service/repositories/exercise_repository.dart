@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'package:train_in/objectbox.g.dart';
 import 'package:train_in/service/database/models/exercise_model.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/service/providers/exercise_provider.dart';
 import 'package:path/path.dart';
 
@@ -43,12 +44,24 @@ class ExerciseRepository {
         instructions: jsonToStringArray(exercise['instructions']),
         image: image
       );
-      
+
       _box.put(exerc);
     }
     
     print('called');
   }
+
+  bool addToTraining({required int exerciseId, required Training training}) {
+    final exercise = _box.get(exerciseId);
+
+    if (exercise != null) {
+      exercise.trainings.add(training);
+      _box.put(exercise, mode: PutMode.update);
+      return true;
+    }
+
+    return false;
+  } 
 
   List<String> jsonToStringArray(List<dynamic> list) {
     final stringList = list.cast<String>().toList();

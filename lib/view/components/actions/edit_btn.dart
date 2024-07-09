@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/assets/trainin_icons.dart';
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key});
+  final int trainingId;
+  EditButton({super.key, required this.trainingId});
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: (){
-        Navigator.of(context).pushNamed('/edit_training');
+        Navigator.of(context).pushNamed('/edit_training', arguments: trainingId);
       },
       style: IconButton.styleFrom(
         shape: const RoundedRectangleBorder(),

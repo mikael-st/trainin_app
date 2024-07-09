@@ -1,16 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:train_in/service/database/models/training_model.dart';
 import 'package:train_in/view/assets/palette.dart';
 import 'package:train_in/view/components/actions/back_btn.dart';
 import 'package:train_in/view/components/actions/done_btn.dart';
 import 'package:train_in/view/components/area_label.dart';
 import 'package:train_in/view/components/check_day.dart';
 
-// ignore: must_be_immutable
-class EditTrainingHeader extends StatelessWidget
-    implements PreferredSizeWidget {
-  EditTrainingHeader({super.key});
+class EditTrainingHeader extends StatefulWidget implements PreferredSizeWidget {
+  final String trainingName;
+  final List<int> daysValues;
+  EditTrainingHeader({super.key, required this.daysValues, required this.trainingName});
 
-  List<String> days = ['Dom', 'Seg', 'Ter', 'Quar', 'Quin', 'Sex', 'Sab'];
+  @override
+  State<EditTrainingHeader> createState() => _EditTrainingHeaderState();
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(250);
+}
+
+class _EditTrainingHeaderState extends State<EditTrainingHeader> {
+  List<CheckDay> days = [
+    CheckDay(label: 'Dom'),
+    CheckDay(label: 'Seg'),
+    CheckDay(label: 'Ter'),
+    CheckDay(label: 'Quar'),
+    CheckDay(label: 'Quin'),
+    CheckDay(label: 'Sex'),
+    CheckDay(label: 'Sab')
+  ];
+
+  final textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    textController.text = widget.trainingName;
+    widget.daysValues.map(
+      (index) => days[index].isChecked = true
+    ).toList();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    textController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +71,7 @@ class EditTrainingHeader extends StatelessWidget
 
   Widget _input() {
     return TextField(
+      controller: textController,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.only(left: 12),
           hintText: 'Nome',
@@ -52,11 +87,8 @@ class EditTrainingHeader extends StatelessWidget
 
   Widget _days() {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: days.map((d) => CheckDay(label: d)).toList());
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: days
+    );
   }
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(250);
 }

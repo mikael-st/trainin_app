@@ -62,7 +62,7 @@ class MyWorkoutsPage extends StatelessWidget {
     return Column(
       children: List.generate(
         list.length,
-        (index) => TrainingLabel(title: list[index].name, subtitle: '${list[index].exercises.length} exercícios', callback: () => Navigator.of(ctx).pushNamed('/training', arguments: list[index]))),
+        (index) => TrainingLabel(title: list[index].name, subtitle: '${list[index].exercises.length} exercícios', callback: () => Navigator.of(ctx).pushNamed('/training', arguments: _repository.watch(list[index].id)))),
     );
   }
 }
